@@ -47,7 +47,7 @@ export const constantRoutes = [
     path: '/',
     redirect: '/article'
   },
-  
+
   {
     path: '/article',
     component: Layout,
@@ -63,6 +63,12 @@ export const constantRoutes = [
         path: 'addNote',
         component: () => import('@/views/article/addNote'),
         meta: { title: '添加文章', icon: 'tree' }
+      },
+      {
+        path: 'modifyNote',
+        hidden: true,
+        component: () => import('@/views/article/modifyNote'),
+        meta: { title: '修改文章', icon: 'tree' }
       }
     ]
   },

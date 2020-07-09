@@ -60,8 +60,8 @@
       </el-table-column>
       <el-table-column align="center" prop="updatedAt" label="操作" width="200">
         <template slot-scope="scope">
-          <el-button>修改</el-button>
-          <el-button>删除</el-button>
+          <el-button @click="handleToModify(scope.row)">修改</el-button>
+          <el-button @click="handleDelete(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -117,7 +117,33 @@
         this.list = data.data
         this.total = data.total
         this.listLoading = false
-      }
+      },
+      handleToModify (tab) {
+        this.$router.push({
+          path: '/article/modifyNote',
+          query: {
+            id: tab._id
+          }
+        })
+      },
+      handleDelete (tab) {
+        this.$confirm('是否删除该文件?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then( async () => {
+          const data = await this.$fetch.api_article.deleteArticle({id: tab.id})
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+      },
     }
   }
 </script>

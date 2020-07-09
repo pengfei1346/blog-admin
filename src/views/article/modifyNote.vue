@@ -23,17 +23,17 @@
           style="min-height: 600px;z-index: 1"
         />
 
-<!--        <mavon-editor-->
-<!--          class="md"-->
-<!--          ref="md"-->
-<!--          v-model="notes.content"-->
-<!--          @change="change"-->
-<!--          style="min-height: 600px;z-index: 1"-->
-<!--          :subfield="options.subfield"-->
-<!--          :defaultOpen="options.defaultOpen"-->
-<!--          :toolbarsFlag="options.toolbarsFlag"-->
-<!--          :editable="options.editable"-->
-<!--          :scrollStyle="options.scrollStyle" />-->
+        <!--        <mavon-editor-->
+        <!--          class="md"-->
+        <!--          ref="md"-->
+        <!--          v-model="notes.content"-->
+        <!--          @change="change"-->
+        <!--          style="min-height: 600px;z-index: 1"-->
+        <!--          :subfield="options.subfield"-->
+        <!--          :defaultOpen="options.defaultOpen"-->
+        <!--          :toolbarsFlag="options.toolbarsFlag"-->
+        <!--          :editable="options.editable"-->
+        <!--          :scrollStyle="options.scrollStyle" />-->
 
       </el-form-item>
       <el-form-item label="标签">
@@ -61,12 +61,13 @@
   import 'mavon-editor/dist/css/index.css'
 
   export default {
-    name: 'write',
+    name: 'modifyNote',
     components: {
       uploadImg, mavonEditor
     },
     data() {
       return {
+        id: null,
         options: {
           subfield: true,// 单双栏模式
           // defaultOpen: 'edit',//edit： 默认展示编辑区域 ， preview： 默认展示预览区域
@@ -106,7 +107,16 @@
         }
       }
     },
+    created() {
+      this.id = this.$route.query.id
+      this.getArticleDetail()
+    },
     methods: {
+      async getArticleDetail () {
+        const data = await this.$fetch.api_article.getArticleDetail({id: this.id})
+        console.log(data)
+        this.notes = data.data
+      },
       // 所有操作都会被解析重新渲染
       change(value, render) {
         // render 为 markdown 解析后的结果[html]
@@ -122,11 +132,18 @@
         //     }
         // });
         let form = this.notes
-        const data = await this.$fetch.api_article.addArticle(form)
+        form.id = this.id
+        const data = await this.$fetch.api_article.modifyArticle(form)
         if (data.code === 200) {
-          alert(data.msg)
+          this.$message({
+            type: 'success',
+            message: data.msg || 'ok'
+          });
         } else if (data.code === 400) {
-          alert('发布失败')
+          this.$message({
+            type: 'error',
+            message: data.msg || '发布失败'
+          });
         }
       },
       async fileLoad(file) {
@@ -138,7 +155,10 @@
         if (data.code === 200) {
           this.notes.coverImgUrl = data.url
         } else if (data.code === 400) {
-          alert('上传失败')
+          this.$message({
+            type: 'error',
+            message: '上传失败'
+          });
         }
       },
       resetForm(formName) {
