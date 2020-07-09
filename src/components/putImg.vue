@@ -14,11 +14,6 @@
 <script>
   export default {
     name: "putImg",
-    data() {
-      return {
-        currentImg: ''
-      }
-    },
     props: {
       img: {
         type: String,
@@ -29,13 +24,23 @@
         default: true
       }
     },
+    computed: {
+      currentImg: {
+        get () {
+          return this.img
+        },
+        set (val) {
+          this.$emit('update:img',val)
+        },
+      }
+    },
     methods: {
       async handlePut($event) {
         let file = $event.target.files[0];
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = (e) => {
-          this.currentImg = e.target.result
+          // this.currentImg = e.target.result
           this.$emit('fileLoad',e.target.result)
         };
         // this.currentImg = window.URL.createObjectURL(file)

@@ -132,13 +132,14 @@
       async fileLoad(file) {
         let form = new FormData()
         form.append('file', file)
-        const data = await this.$xhr.post('/article/uploadImg', form, {
-          headers: { 'Content-Type': 'multipart/form-data' }
-        })
+        const data = await this.$fetch.api_article.uploadImg(form)
         if (data.code === 200) {
           this.notes.coverImgUrl = data.url
         } else if (data.code === 400) {
-          alert('上传失败')
+          this.$message({
+            type: 'error',
+            message: '上传失败'
+          });
         }
       },
       resetForm(formName) {

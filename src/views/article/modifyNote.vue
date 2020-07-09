@@ -12,7 +12,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item label="图片" required>
-        <uploadImg @fileLoad="fileLoad"/>
+        <uploadImg @fileLoad="fileLoad" :img.sync="notes.coverImgUrl"/>
       </el-form-item>
       <el-form-item label="内容" required>
         <!--<QuillEditor v-model="notes.content" :placeholder="'填写岗位需求'"/>-->
@@ -135,6 +135,7 @@
         form.id = this.id
         const data = await this.$fetch.api_article.modifyArticle(form)
         if (data.code === 200) {
+          this.$router.back()
           this.$message({
             type: 'success',
             message: data.msg || 'ok'
@@ -149,9 +150,7 @@
       async fileLoad(file) {
         let form = new FormData()
         form.append('file', file)
-        const data = await this.$xhr.post('/article/uploadImg', form, {
-          headers: { 'Content-Type': 'multipart/form-data' }
-        })
+        const data = await this.$fetch.api_article.uploadImg(form)
         if (data.code === 200) {
           this.notes.coverImgUrl = data.url
         } else if (data.code === 400) {
