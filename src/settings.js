@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '后台管理系统',
+  title: '博客-后台管理系统',
 
   /**
    * @type {boolean} true | false
