@@ -42,7 +42,8 @@
         reader.onload = (e) => {
           // this.currentImg = e.target.result
           this.$emit('fileLoad',e.target.result)
-        };
+        }
+        document.getElementById('add').value = ''
         // this.currentImg = window.URL.createObjectURL(file)
       }
     }

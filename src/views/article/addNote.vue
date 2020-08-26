@@ -12,7 +12,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item label="图片" required>
-        <uploadImg @fileLoad="fileLoad"/>
+        <uploadImg @fileLoad="fileLoad" :img.sync="notes.coverImgUrl"/>
       </el-form-item>
       <el-form-item label="内容" required>
         <!--<QuillEditor v-model="notes.content" :placeholder="'填写岗位需求'"/>-->
@@ -124,7 +124,11 @@
         let form = this.notes
         const data = await this.$fetch.api_article.addArticle(form)
         if (data.code === 200) {
-          alert(data.msg)
+          this.$message({
+            type: 'success',
+            message: data.msg | '上传成功'
+          });
+          this.notes = this.$options.data()['notes']
         } else if (data.code === 400) {
           alert('发布失败')
         }
