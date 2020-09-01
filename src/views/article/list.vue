@@ -127,16 +127,18 @@
         })
       },
       handleDelete (tab) {
-        this.$confirm('是否删除该文件?', '提示', {
+        console.log(tab);
+        this.$confirm('是否确认删除?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then( async () => {
-          const data = await this.$fetch.api_article.deleteArticle({id: tab.id})
+          const data = await this.$fetch.api_article.deleteArticle({id: tab._id})
           this.$message({
             type: 'success',
             message: '删除成功!'
           });
+          this.getArticleList()
         }).catch(() => {
           this.$message({
             type: 'info',

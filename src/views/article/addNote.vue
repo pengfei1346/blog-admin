@@ -126,7 +126,7 @@
         if (data.code === 200) {
           this.$message({
             type: 'success',
-            message: data.msg | '上传成功'
+            message: data.msg || '添加成功'
           });
           this.notes = this.$options.data()['notes']
         } else if (data.code === 400) {
