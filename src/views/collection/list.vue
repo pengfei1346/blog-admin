@@ -20,11 +20,6 @@
           {{ scope.row.title }}
         </template>
       </el-table-column>
-      <el-table-column label="coverImgUrl">
-        <template slot-scope="scope">
-          <!--{{ scope.row.coverImgUrl }}-->
-        </template>
-      </el-table-column>
       <el-table-column
         align="center"
         prop="author"
@@ -32,35 +27,37 @@
       <el-table-column
         align="center"
         prop="abstract"
-        label="摘要"/>
+        label="描述"/>
       <el-table-column
         align="center"
         prop="tags"
-        label="tags"/>
+        label="链接"/>
       <el-table-column
         align="center"
-        prop="heatNum"
+        prop="来源"
         label="heatNum"/>
       <el-table-column
         align="center"
-        prop="browseNum"
-        label="browseNum"/>
-      <el-table-column
-        align="center"
-        prop="replyNum"
-        label="replyNum"/>
-
-      <el-table-column align="center" prop="created_at" label="createdAt" width="200">
+        prop="创建时间"
+        label="createdAt"
+        width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createdAt }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="updatedAt" label="updatedAt" width="200">
+      <el-table-column
+        align="center"
+        prop="更新时间"
+        label="updatedAt"
+        width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.updatedAt }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="updatedAt" label="操作" width="200">
+      <el-table-column
+        align="center"
+        label="操作"
+        width="200">
         <template slot-scope="scope">
           <el-button>修改</el-button>
           <el-button>删除</el-button>
