@@ -74,20 +74,20 @@ export const constantRoutes = [
   },
 
   {
-    path: '/tag',
+    path: '/categories',
     component: Layout,
-    redirect: '/tag/list',
+    redirect: '/categories/list',
     name: 'Example',
     meta: { title: '分类管理', icon: 'example' },
     children: [
       {
         path: 'list',
-        component: () => import('@/views/tag/list'),
+        component: () => import('@/views/categories/list'),
         meta: { title: '全部分类', icon: 'table' }
       },
       {
         path: 'add',
-        component: () => import('@/views/tag/list'),
+        component: () => import('@/views/categories/add'),
         meta: { title: '添加分类', icon: 'tree' }
       }
     ]
