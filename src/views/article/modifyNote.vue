@@ -40,7 +40,7 @@
         <el-checkbox-group v-model="notes.tags" class="fll" size="small">
           <el-checkbox-button v-for="label in lables"
                               :label="label" :key="label.index">
-            {{label.title}}
+            {{label.name}}
           </el-checkbox-button>
         </el-checkbox-group>
       </el-form-item>
@@ -84,15 +84,15 @@
           coverImgUrl: ''
         },
         lables: [
-          { title: 'html' },
-          { title: 'css' },
-          { title: 'h5' },
-          { title: 'js' },
-          { title: 'es6' },
-          { title: 'ajax' },
-          { title: 'vue.js' },
-          { title: 'react.js' },
-          { title: 'ui' }
+          { name: 'html' },
+          { name: 'css' },
+          { name: 'h5' },
+          { name: 'js' },
+          { name: 'es6' },
+          { name: 'ajax' },
+          { name: 'vue.js' },
+          { name: 'react.js' },
+          { name: 'ui' }
         ],
         rules: {
           title: [
