@@ -8,12 +8,14 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="ID" width="95">
+      <el-table-column align="center"
+                       label="ID"
+                       width="95">
         <template slot-scope="scope">
           {{ scope.$index }}
         </template>
       </el-table-column>
-      <el-table-column label="Title">
+      <el-table-column label="标题">
         <template slot-scope="scope">
           {{ scope.row.title }}
         </template>
@@ -47,7 +49,7 @@
         align="center"
         prop="replyNum"
         label="replyNum"/>
-  
+
       <el-table-column align="center" prop="created_at" label="createdAt" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createdAt }}</span>
@@ -65,7 +67,7 @@
         </template>
       </el-table-column>
     </el-table>
-  
+
     <pagination v-show="total>0"
                 :total="total"
                 :page.sync="pn"
@@ -75,22 +77,8 @@
 </template>
 
 <script>
-  import Pagination from '@/components/paganation'
-  
+
   export default {
-    components: {
-      Pagination
-    },
-    filters: {
-      statusFilter(status) {
-        const statusMap = {
-          published: 'success',
-          draft: 'gray',
-          deleted: 'danger'
-        }
-        return statusMap[status]
-      }
-    },
     data() {
       return {
         list: null,
@@ -101,7 +89,7 @@
       }
     },
     created() {
-      this.getArticleList()
+      // this.getArticleList()
     },
     methods: {
       async getArticleList() {

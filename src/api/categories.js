@@ -6,5 +6,5 @@ export const addCategories = data => request({ url: `/categories`, method: 'post
 
 export const modifyCategories = data => request({ url: `/categories/${data._id}`, method: 'put', data})
 
-export const deleteCategories = params => request({ url: `/categories`, method: 'delete', params})
+export const deleteCategories = params => request({ url: `/categories/${params._id}`, method: 'delete'})
 

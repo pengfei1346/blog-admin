@@ -77,7 +77,7 @@ export const constantRoutes = [
     path: '/categories',
     component: Layout,
     redirect: '/categories/list',
-    name: 'Example',
+    name: 'categories',
     meta: { title: '分类管理', icon: 'example' },
     children: [
       {
@@ -89,6 +89,26 @@ export const constantRoutes = [
         path: 'add',
         component: () => import('@/views/categories/add'),
         meta: { title: '添加分类', icon: 'tree' }
+      }
+    ]
+  },
+
+  {
+    path: '/collection',
+    component: Layout,
+    redirect: '/categories/list',
+    name: 'collection',
+    meta: { title: '收藏管理', icon: 'example' },
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/collection/list'),
+        meta: { title: '全部收藏', icon: 'table' }
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/collection/add'),
+        meta: { title: '添加收藏', icon: 'tree' }
       }
     ]
   },

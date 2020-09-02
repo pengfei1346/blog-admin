@@ -8,12 +8,13 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="ID" width="95">
+      <el-table-column label="ID" width="95">
         <template slot-scope="scope">
           {{ scope.$index }}
         </template>
       </el-table-column>
-      <el-table-column label="名称">
+      <el-table-column align="center"
+                       label="名称">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
@@ -24,20 +25,24 @@
         prop="describe"
         label="描述"/>
 
-      <el-table-column align="center" prop="created_at" label="createdAt" width="200">
+      <el-table-column
+        align="center"
+        prop="created_at"
+        label="创建时间"
+        width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createdAt }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="updatedAt" label="updatedAt" width="200">
+      <el-table-column align="center" prop="updatedAt" label="修改时间" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.updatedAt }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="updatedAt" label="操作" width="200">
         <template slot-scope="scope">
-          <el-button size="small" type="primary" @click="handleModify">修改</el-button>
-          <el-button size="small" type="warning" @click="handleDelete">删除</el-button>
+          <el-button size="small" type="primary" @click="handleModify(scope.row)">修改</el-button>
+          <el-button size="small" type="warning" @click="handleDelete(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -154,12 +159,12 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(async () => {
-          const data = await this.$fetch.api_categories.deleteCategories({id: tab._id})
+          const data = await this.$fetch.api_categories.deleteCategories({_id: tab._id})
           this.$message({
             type: 'success',
             message: '删除成功!'
           });
-          this.getArticleList()
+          this.getCategories()
         }).catch(() => {
           this.$message({
             type: 'info',

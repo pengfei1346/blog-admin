@@ -8,17 +8,20 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="ID" width="95">
+      <el-table-column align="center"
+                       label="ID"
+                       width="95">
         <template slot-scope="scope">
           {{ scope.$index }}
         </template>
       </el-table-column>
-      <el-table-column label="Title">
+      <el-table-column label="标题">
         <template slot-scope="scope">
           {{ scope.row.title }}
         </template>
       </el-table-column>
-      <el-table-column label="coverImgUrl" min-width="100">
+      <el-table-column label="头图"
+                       min-width="100">
         <template slot-scope="scope">
           <img :src="scope.row.coverImgUrl" style="width: 100%;height: 60px;">
         </template>
@@ -34,34 +37,40 @@
       <el-table-column
         align="center"
         prop="tags"
-        label="tags"/>
+        label="标签"/>
       <el-table-column
         align="center"
         prop="heatNum"
-        label="heatNum"/>
+        label="关注人数"/>
       <el-table-column
         align="center"
         prop="browseNum"
-        label="browseNum"/>
+        label="浏览次数"/>
       <el-table-column
         align="center"
         prop="replyNum"
-        label="replyNum"/>
+        label="回复次数"/>
 
-      <el-table-column align="center" prop="created_at" label="createdAt" width="200">
+      <el-table-column align="center"
+                       prop="created_at"
+                       label="创建时间"
+                       width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.createdAt | parseTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="updatedAt" label="updatedAt" width="200">
+      <el-table-column align="center"
+                       prop="updatedAt"
+                       label="更新时间"
+                       width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.updatedAt | parseTime }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="updatedAt" label="操作" width="200">
         <template slot-scope="scope">
-          <el-button @click="handleToModify(scope.row)">修改</el-button>
-          <el-button @click="handleDelete(scope.row)">删除</el-button>
+          <el-button size="small" type="primary" @click="handleToModify(scope.row)">修改</el-button>
+          <el-button size="small" type="warning" @click="handleDelete(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>

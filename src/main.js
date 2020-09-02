@@ -7,6 +7,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import '@/styles/index.scss' // global css
 
+// 引入 分页组件
+import Pagination from '@/components/paganation'
+// Vue.component('upload-file', UploadFile)
+Vue.component('Pagination',Pagination)
+
 import App from './App'
 import store from './store'
 import router from './router'
