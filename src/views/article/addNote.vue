@@ -39,7 +39,8 @@
       <el-form-item label="标签">
         <el-checkbox-group v-model="notes.tags" class="fll" size="small">
           <el-checkbox-button v-for="label in lables"
-                              :label="label" :key="label.index">
+                              :label="label.name"
+                              :key="label.index">
             {{label.name}}
           </el-checkbox-button>
         </el-checkbox-group>
