@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export const getCategories = params => request({ url: `/categories`, method: 'get', params})
 
-export const addCategories = params => request({ url: `/categories`, method: 'post', params})
+export const addCategories = data => request({ url: `/categories`, method: 'post', data})
 
 export const modifyCategories = data => request({ url: `/categories/${data._id}`, method: 'put', data})
 
