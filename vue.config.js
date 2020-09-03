@@ -53,8 +53,8 @@ module.exports = {
     },
     proxy: {
       '/': {
-        target: 'http://62.234.90.11:3300',
-        // target: 'http://localhost:3300',
+        // target: 'http://62.234.90.11:3300',
+        target: 'http://localhost:3300',
         ws: false,
         changeOrigin: true
         // pathRewrite: {
