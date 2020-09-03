@@ -113,26 +113,26 @@ export const constantRoutes = [
     ]
   },
 
-  {
-    path: 'external-link',
-    component: Layout,
-    redirect: '/tag/index',
-    meta: { title: '管理员用户', icon: 'example' },
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/tag/list'),
-        meta: { title: '管理员列表', icon: 'form' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tag/list'),
-        meta: { title: '添加管理员', icon: 'tree' }
-      }
-    ]
-  },
+  // {
+  //   path: 'external-link',
+  //   component: Layout,
+  //   redirect: '/tag/index',
+  //   meta: { title: '管理员用户', icon: 'example' },
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/tag/list'),
+  //       meta: { title: '管理员列表', icon: 'form' }
+  //     },
+  //     {
+  //       path: 'tree',
+  //       name: 'Tree',
+  //       component: () => import('@/views/tag/list'),
+  //       meta: { title: '添加管理员', icon: 'tree' }
+  //     }
+  //   ]
+  // },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
