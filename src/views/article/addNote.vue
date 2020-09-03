@@ -77,7 +77,7 @@
         },
         html: '',    // 及时转的html
         notes: {
-          name: '',
+          title: '',
           content: '',
           tags: [],
           abstract: '',
